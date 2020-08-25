@@ -8,7 +8,7 @@ import api from '../../services/api';
 import apiConfig from '../../config/api';
 import { formatMoney } from '../../utils';
 
-import { WrapperProductSingle } from '../../styles/pages/styles';
+import { WrapperProductSingle } from '../../styles/pages/product-single';
 
 const ProductSingle = ({ }) => {
 
@@ -29,11 +29,8 @@ const ProductSingle = ({ }) => {
     return !!cartItems.find(item => item.id === product.id);
   }
 
-  console.log(addProduct)
-
   return (
     <Layout>
-
       <WrapperProductSingle>
         <Slider
           dots={true}
@@ -41,15 +38,11 @@ const ProductSingle = ({ }) => {
           slidesToScroll={1}
           infinite={true}
         >
-
           {product.photos && product.photos.map(photo => (
 
-
-            <img key={photo.id} src={`${apiConfig.baseURL}${photo.url}`} alt="" />
-
+            <img className="photo-item" key={photo.id} src={`${apiConfig.baseURL}${photo.url}`} alt={photo.name} />
 
           ))}
-
         </Slider>
 
         <div className="details">
@@ -63,14 +56,11 @@ const ProductSingle = ({ }) => {
           escapeHtml={false}
         />
 
-
         {!isInCart(product) && <Button className="mt" onClick={() => addProduct(product)}>Adicionar ao Carrinho</Button>}
 
         {!!isInCart(product) && <Button className="mt" onClick={() => increase(product)}>Adicionar mais</Button>}
 
       </WrapperProductSingle>
-
-
     </Layout>
   );
 }

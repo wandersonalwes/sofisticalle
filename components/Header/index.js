@@ -10,9 +10,16 @@ import { Container, IconMenu, IconFavorites, IconCart, Cart } from './styles';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { itemCount, cartItems, increase, decrease, removeProduct, total } = useCart();
+  const { itemCount, cartItems, increase, decrease, removeProduct, total, checkout } = useCart();
 
-  console.log(itemCount)
+  const checkoutMessage = () => {
+    const productList = cartItems.map(item => {
+      return `${item.quantity} ${item.name}: Valor ${formatMoney(item.price)}%0D%0D%0A%0D%0D%0A`
+    });
+
+    return `Olá! *Aqui está a lista de produtos que desejo comprar:*%0D%0D%0A%0D%0D%0A${productList}*O valor total é:* ${formatMoney(total)}%0D%0D%0A%0D%0D%0AObrigado(a)!
+    `
+  }
 
   return (
     <Container>
@@ -44,6 +51,8 @@ const Header = () => {
             <FiX />
           </button>
           <h1>Carrinho</h1>
+
+          <div></div>
         </header>
 
         {cartItems.length > 0 ? (
@@ -94,22 +103,24 @@ const Header = () => {
                 <strong>{formatMoney(total)}</strong>
               </div>
 
-              <Link href="/">
-                <a className='mt btn-link'>Finalizar compra pelo Whatsapp</a>
-              </Link>
+              <a onClick={checkout} className='mt btn-link' target="_blank" href={`https://api.whatsapp.com/send?phone=5562993395065&text=${checkoutMessage()}`}>Finalizar compra pelo Whatsapp</a>
+
             </div>
           </div>
         ) : (
             <div className="cart-list-wrapper">
-              <h2>Seu carrinho está vazio :(</h2>
+              <div className="empty-cart">
+                <img src="/icons/empty-cart.svg" alt="" />
+                <h2>Seu carrinho está vazio :(</h2>
 
-              <Link href="/" >
-                <a className='mt btn-link'>
-                  <button onClick={() => setIsOpen(false)}>
-                    Comece a comprar
-                  </button>
-                </a>
-              </Link>
+                <Link href="/" >
+                  <a className='mt btn-link'>
+                    <button onClick={() => setIsOpen(false)}>
+                      Comece a comprar
+    </button>
+                  </a>
+                </Link>
+              </div>
             </div>
           )}
 

@@ -4,8 +4,6 @@ import styled from 'styled-components';
 export const Container = styled.div`
   background: white;
   border: 1px solid var(--color-line-in-white);
-  /* box-shadow: var(--shadow-lg); */
-  /* border-radius: var(--border-radius-md); */
   transition: opacity 200ms;
 
   &:hover {
@@ -60,8 +58,10 @@ export const Container = styled.div`
 
     .product-name {
       font-size: 1.4rem;
+      font-family: 'Archivo', sans-serif;
+      font-weight: 400;
       color: var(--color-text-title);
-
+      margin-bottom: 0.5rem;
     }
     .price {
       font-size: 1.8rem;

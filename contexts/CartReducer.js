@@ -48,7 +48,11 @@ export const CartReducer = (state, action) => {
         cartItems: [...state.cartItems]
       }
     case "CHECKOUT":
-      return
+      return {
+        cartItems: [],
+        checkout: true,
+        ...sumItems([]),
+      }
     case "CLEAR":
       return
     default: throw new Error('Unexpected action');;

@@ -87,6 +87,17 @@ export const Cart = styled.div`
     padding: 5rem 2rem;
     overflow: auto;
 
+    .empty-cart {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        margin-bottom: 2rem;
+      }
+    }
+
     .cart-item {
       margin-bottom: 1.4rem;
       border: 1px solid var(--color-line-in-white);

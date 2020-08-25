@@ -30,11 +30,17 @@ export default function CartProvider({ children }) {
     dispatch({ type: 'REMOVE_ITEM', payload })
   }
 
+  const checkout = payload => {
+    console.log('CHECKOUT', state);
+    dispatch({ type: 'CHECKOUT' })
+  }
+
   const contextValues = {
     addProduct,
     increase,
     decrease,
     removeProduct,
+    checkout,
     ...state
   }
 

@@ -5,6 +5,11 @@ export const WrapperProductSingle = styled.div`
   max-width: 70rem;
   padding-bottom: 4rem;
 
+  .photo-item {
+    max-height: 40rem;
+    object-fit: contain;
+  }
+
   .details {
     display: flex;
     margin-top: 5rem;
@@ -19,10 +24,12 @@ export const WrapperProductSingle = styled.div`
     }
 
     .price {
-      font-size: 1.8rem;
+      font-size: 2.4rem;
       background: var(--color-gradient-primary);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+
+      margin-left: 1.4rem;
     }
   }
 `;
