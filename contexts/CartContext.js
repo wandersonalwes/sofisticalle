@@ -1,5 +1,8 @@
-import React, { createContext, useContext, useReducer, useState } from 'react';
+import React, { createContext, useContext, useReducer, useState, useEffect } from 'react';
 import { CartReducer, sumItems } from './CartReducer';
+import Cookies from 'js-cookie';
+
+import { useRouter } from 'next/router';
 
 export const CartContext = createContext({});
 
@@ -7,12 +10,21 @@ var storage = [];
 
 if (process.browser) {
   var storage = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
-
 }
 const initialState = { cartItems: storage, ...sumItems(storage) }
 
 
 export default function CartProvider({ children }) {
+  const [whatsapp, setWhatsapp] = useState('');
+
+  const { query } = useRouter();
+
+  useEffect(() => {
+    if (query.whatsapp !== undefined) {
+      Cookies.set('whatsapp', `${query.whatsapp}`);
+    }
+    setWhatsapp(Cookies.get('whatsapp') ? Cookies.get('whatsapp') : '');
+  }, [query.whatsapp]);
 
   const [state, dispatch] = useReducer(CartReducer, initialState);
 
@@ -41,6 +53,7 @@ export default function CartProvider({ children }) {
     decrease,
     removeProduct,
     checkout,
+    whatsapp,
     ...state
   }
 

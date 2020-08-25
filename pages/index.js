@@ -64,6 +64,7 @@ export default function Home() {
       </div>
 
       <div className="mb">
+
         <Slider {...settings}>
 
           {featured && featured.map(featuredItem => (

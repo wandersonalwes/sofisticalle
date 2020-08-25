@@ -11,7 +11,9 @@ import { Container, IconMenu, IconFavorites, IconCart, Cart } from './styles';
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [menuIsOpen, setMenuIsOpen] = useState(false);
-  const { itemCount, cartItems, increase, decrease, removeProduct, total, checkout } = useCart();
+  const { itemCount, cartItems, increase, decrease, removeProduct, total, checkout, whatsapp } = useCart();
+
+  console.log(whatsapp)
 
   function handleClose() {
     return setMenuIsOpen(false);
@@ -109,7 +111,13 @@ const Header = () => {
                 <strong>{formatMoney(total)}</strong>
               </div>
 
-              <a onClick={checkout} className='mt btn-link' target="_blank" href={`https://api.whatsapp.com/send?phone=5562993395065&text=${checkoutMessage()}`}>Finalizar compra pelo Whatsapp</a>
+              {whatsapp !== '' && (
+                <a onClick={checkout} className='mt btn-link' target="_blank" href={`https://api.whatsapp.com/send?phone=${whatsapp}&text=${checkoutMessage()}`}>Finalizar compra pelo Whatsapp</a>
+              )}
+
+              {whatsapp === '' && (
+                <a onClick={checkout} className='mt btn-link' target="_blank" href={`https://api.whatsapp.com/send?phone=5562993395065&text=${checkoutMessage()}`}>Finalizar compra pelo Whatsapp</a>
+              )}
 
             </div>
           </div>
@@ -123,7 +131,7 @@ const Header = () => {
                   <a className='mt btn-link'>
                     <button onClick={() => setIsOpen(false)}>
                       Comece a comprar
-    </button>
+                    </button>
                   </a>
                 </Link>
               </div>
