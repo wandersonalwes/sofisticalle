@@ -4,10 +4,11 @@ import { useRouter } from 'next/router';
 import Slider from 'react-slick';
 import ReactMarkdown from 'react-markdown';
 import { useCart } from '../../contexts/CartContext';
-import { WrapperProductSingle } from './styles';
 import api from '../../services/api';
 import apiConfig from '../../config/api';
 import { formatMoney } from '../../utils';
+
+import { WrapperProductSingle } from '../../styles/pages/styles';
 
 const ProductSingle = ({ }) => {
 
