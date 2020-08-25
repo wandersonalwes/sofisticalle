@@ -3,10 +3,7 @@ import { FiSearch } from 'react-icons/fi';
 
 import { Container } from './styles';
 
-export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-}
-
-const Input: React.FC<InputProps> = ({ ...rest }) => {
+const Input = ({ ...rest }) => {
   return (
     <Container>
       <input {...rest} />

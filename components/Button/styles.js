@@ -6,8 +6,7 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     color: var(--color-text-in-primary);
-    background: 
-    ${props => props.gradient ? 'linear-gradient(89.79deg, #EE0979 0.15%, #FF6A00 99.79%)' : '#FFA700'};
+    background: var(--color-primary);
     border: 0;
     height: 5rem;
     padding: 0 2rem;

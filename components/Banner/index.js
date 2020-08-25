@@ -2,12 +2,7 @@ import React from 'react';
 
 import { Container } from './styles';
 
-interface BannerProps {
-  title: string;
-  caption: string;
-}
-
-const Banner: React.FC<BannerProps> = ({ title, caption }) => {
+const Banner = ({ title, caption }) => {
   return (
     <Container>
       <div className="wrapper-heading">

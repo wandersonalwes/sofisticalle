@@ -1,12 +1,7 @@
-import Cookies from 'js-cookie';
-
-
-
 const Storage = (cartItems) => {
   if (process.browser) {
     localStorage.setItem('cart', JSON.stringify(cartItems.length > 0 ? cartItems : []));
   }
-  // Cookies.set('cart', JSON.stringify(cartItems.length > 0 ? cartItems : []));
 }
 
 export const sumItems = cartItems => {

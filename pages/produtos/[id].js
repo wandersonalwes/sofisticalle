@@ -9,27 +9,14 @@ import api from '../../services/api';
 import apiConfig from '../../config/api';
 import { formatMoney } from '../../utils';
 
-interface ProductPhotos {
-  id: number;
-  url: string;
-}
-
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-  description: string;
-  photos: ProductPhotos[];
-}
-
-const ProductSingle: React.FC = ({ }) => {
+const ProductSingle = ({ }) => {
 
   const { addProduct, cartItems, increase } = useCart();
 
   const router = useRouter();
   const { id } = router.query;
 
-  const [product, setProduct] = useState({} as Product);
+  const [product, setProduct] = useState({});
 
   useEffect(() => {
     if (id !== undefined) {
@@ -41,7 +28,7 @@ const ProductSingle: React.FC = ({ }) => {
     return !!cartItems.find(item => item.id === product.id);
   }
 
-  console.log(id)
+  console.log(addProduct)
 
   return (
     <Layout>

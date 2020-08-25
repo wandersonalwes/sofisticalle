@@ -1,5 +1,4 @@
-import React, { createContext, useContext, useReducer } from 'react';
-// import Cookies from 'js-cookie';
+import React, { createContext, useContext, useReducer, useState } from 'react';
 import { CartReducer, sumItems } from './CartReducer';
 
 export const CartContext = createContext({});
@@ -8,10 +7,10 @@ var storage = [];
 
 if (process.browser) {
   var storage = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
+
 }
 const initialState = { cartItems: storage, ...sumItems(storage) }
 
-// const initialState = { cartItems: [], ...sumItems([]) }
 
 export default function CartProvider({ children }) {
 
@@ -48,6 +47,5 @@ export default function CartProvider({ children }) {
 
 export function useCart() {
   const context = useContext(CartContext);
-
   return context;
 }

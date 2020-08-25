@@ -7,14 +7,7 @@ import apiConfig from '../../config/api';
 
 import { Container } from './styles';
 
-interface ProductItemProps {
-  id: number;
-  photoURL: string;
-  name: string;
-  price: number;
-}
-
-const ProductItem: React.FC<ProductItemProps> = ({ id, photoURL, name, price }) => {
+const ProductItem = ({ id, photoURL, name, price }) => {
   return (
     <Container className="product-item">
       <Link href="/produtos/[id]" as={`/produtos/${id}`}>

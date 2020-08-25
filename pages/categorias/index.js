@@ -3,7 +3,7 @@ import { Layout, ProductGrid, ProductItem } from '../../components';
 import { useRouter } from 'next/router';
 import api from '../../services/api';
 
-const Categories: React.FC = () => {
+const Categories = () => {
   const [categories, setCategories] = useState([]);
   const router = useRouter();
   const { id } = router.query;

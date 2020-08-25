@@ -2,13 +2,9 @@ import React, { ButtonHTMLAttributes } from 'react';
 
 import { Container } from './styles';
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  gradient?: boolean;
-}
-
-const Button: React.FC<ButtonProps> = ({ gradient, children, ...rest }) => {
+const Button = ({ children, ...rest }) => {
   return (
-    <Container gradient={gradient}>
+    <Container>
       <button {...rest}>
         {children}
       </button>

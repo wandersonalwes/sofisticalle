@@ -8,9 +8,11 @@ import apiConfig from '../../config/api';
 
 import { Container, IconMenu, IconFavorites, IconCart, Cart } from './styles';
 
-const Header: React.FC = () => {
+const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { itemCount, cartItems, increase, decrease, removeProduct, total } = useCart();
+
+  console.log(itemCount)
 
   return (
     <Container>
