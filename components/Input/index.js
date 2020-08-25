@@ -8,7 +8,7 @@ const Input = ({ ...rest }) => {
     <Container>
       <input {...rest} />
 
-      <button>
+      <button type="submit">
         <FiSearch />
       </button>
     </Container>

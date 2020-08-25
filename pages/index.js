@@ -57,7 +57,7 @@ export default function Home() {
         <div className="list-categories">
           {categories.map(category => (
             <div key={category.id}>
-              <CategoryItem href={`/categorias/?id=${category.id}`} thumbnail={category.thumbnail.url} name={category.name} />
+              <CategoryItem href={`/categorias/${category.id}`} thumbnail={category.thumbnail.url} name={category.name} />
             </div>
           ))}
         </div>
