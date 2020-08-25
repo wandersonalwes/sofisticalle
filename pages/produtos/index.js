@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import api from '../../services/api';
 import apiConfig from '../../config/api';
-// import { useRouter } from 'next/router';
 
 import { Layout, ProductGrid, ProductItem, Input, Button } from '../../components';
 

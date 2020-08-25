@@ -50,6 +50,8 @@ export const IconFavorites = styled(FiHeart)`${iconCSS}`;
 export const IconCart = styled(FiShoppingBag)`${iconCSS}`;
 
 export const Cart = styled.div`
+  animation-name: op;
+  animation-duration: 1s;
   position: fixed;
   top: 0;
   bottom: 0;

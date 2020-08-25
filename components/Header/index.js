@@ -3,14 +3,19 @@ import Link from 'next/link';
 import { useCart } from '../../contexts/CartContext';
 import { FiX, FiTrash2 } from 'react-icons/fi';
 import { formatMoney } from '../../utils';
-import Button from '../Button';
+import { Button, Menu } from '../index';
 import apiConfig from '../../config/api';
 
 import { Container, IconMenu, IconFavorites, IconCart, Cart } from './styles';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
   const { itemCount, cartItems, increase, decrease, removeProduct, total, checkout } = useCart();
+
+  function handleClose() {
+    return setMenuIsOpen(false);
+  }
 
   const checkoutMessage = () => {
     const productList = cartItems.map(item => {
@@ -23,7 +28,8 @@ const Header = () => {
 
   return (
     <Container>
-      <button>
+      <Menu menuIsOpen={menuIsOpen} handleClose={handleClose} />
+      <button onClick={() => setMenuIsOpen(true)}>
         <IconMenu />
       </button>
 

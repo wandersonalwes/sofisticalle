@@ -92,4 +92,8 @@ border-radius: 10px;
       margin-right: 1rem;
     }
   }
+  @keyframes op {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
 `;

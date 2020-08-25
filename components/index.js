@@ -6,3 +6,4 @@ export { default as Banner } from './Banner';
 export { default as Button } from './Button';
 export { default as CategoryItem } from './CategoryItem';
 export { default as Layout } from './Layout';
+export { default as Menu } from './Menu';
