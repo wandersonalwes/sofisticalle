@@ -96,4 +96,28 @@ border-radius: 10px;
     from {opacity: 0;}
     to {opacity: 1;}
   }
+
+  .error-404 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100vh;
+
+    h1 {
+      margin-bottom: 2rem;
+    }
+
+    a {
+      font-size: 1.4rem;
+      color: var(--color-primary);
+      text-decoration: none;
+
+      &:hover {
+        filter: brightness(90%);
+      }
+    }
+  }
 `;

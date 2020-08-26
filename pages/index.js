@@ -14,6 +14,7 @@ export default function Home() {
   useEffect(() => {
     api.get('/products', {
       params: {
+        _sort: 'created_at:desc',
         _limit: 9
       }
     }).then(response => setProducts(response.data));
