@@ -35,7 +35,7 @@ const Header = () => {
         <IconMenu />
       </button>
 
-      <Link href={{ pathname: '/' }}>
+      <Link href='/'>
         <a>
           <img src="/logo.svg" alt="Sofisticalle" />
         </a>
