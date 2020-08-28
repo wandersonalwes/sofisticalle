@@ -1,6 +1,4 @@
-import React from 'react';
 import Link from 'next/link';
-import apiConfig from '../../config/api';
 
 import { Container } from './styles';
 
@@ -9,7 +7,7 @@ const CategoryItem = ({ name, thumbnail, href }) => {
     <Container>
       <Link href={href}>
         <a>
-          <img src={`${apiConfig.baseURL}${thumbnail}`} alt="roupeiro" />
+          <img src={`${process.env.NEXT_PUBLIC_API_URL}${thumbnail}`} alt={name} />
           <p>{name}</p>
         </a>
       </Link>

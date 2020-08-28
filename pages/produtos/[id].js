@@ -1,32 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Layout, Button } from '../../components';
 import { useRouter } from 'next/router';
 import Slider from 'react-slick';
 import ReactMarkdown from 'react-markdown';
 import { useCart } from '../../contexts/CartContext';
-import api from '../../services/api';
-import apiConfig from '../../config/api';
 import { formatMoney } from '../../utils';
 
 import { WrapperProductSingle } from '../../styles/pages/product-single';
 
-const ProductSingle = ({ }) => {
+const ProductSingle = ({ product }) => {
+
+  const router = useRouter()
 
   const { addProduct, cartItems, increase } = useCart();
 
-  const router = useRouter();
-  const { id } = router.query;
-
-  const [product, setProduct] = useState({});
-
-  useEffect(() => {
-    if (id !== undefined) {
-      api.get(`/products/${id}`).then(response => setProduct(response.data));
-    }
-  }, [id]);
-
   const isInCart = product => {
     return !!cartItems.find(item => item.id === product.id);
+  }
+
+  if (router.isFallback) {
+    return <div>Loading...</div>
   }
 
   return (
@@ -40,7 +33,7 @@ const ProductSingle = ({ }) => {
         >
           {product.photos && product.photos.map(photo => (
 
-            <img className="photo-item" key={photo.id} src={`${apiConfig.baseURL}${photo.url}`} alt={photo.name} />
+            <img className="photo-item" key={photo.id} src={`${process.env.NEXT_PUBLIC_API_URL}${photo.url}`} alt={photo.name} />
 
           ))}
         </Slider>
@@ -63,6 +56,27 @@ const ProductSingle = ({ }) => {
       </WrapperProductSingle>
     </Layout>
   );
+}
+
+export async function getStaticPaths() {
+
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`)
+  const products = await res.json()
+
+  const paths = products.map((product) => ({
+    params: { id: product.id.toString() },
+  }))
+
+  return { paths, fallback: false }
+}
+
+export async function getStaticProps({ params }) {
+  const { NEXT_PUBLIC_API_URL } = process.env
+
+  const res = await fetch(`${NEXT_PUBLIC_API_URL}/products/${params.id}`)
+  const product = await res.json()
+
+  return { props: { product } }
 }
 
 export default ProductSingle;

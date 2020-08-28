@@ -47,8 +47,6 @@ const Category = () => {
           <h2>Carregando...</h2>
         )}
 
-
-
     </Layout>
   );
 }
