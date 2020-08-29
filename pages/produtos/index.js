@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 
-import { Layout, ProductGrid, ProductItem } from '../../components';
+import { Layout, ProductGrid, ProductItem, Button } from '../../components';
 
 import { Navegation } from '../../styles/pages/product-single'
 
