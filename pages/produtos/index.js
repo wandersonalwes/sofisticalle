@@ -1,57 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import api from '../../services/api';
-import apiConfig from '../../config/api';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 
 import { Layout, ProductGrid, ProductItem, Input, Button } from '../../components';
 
-function Products() {
+import { Navegation } from '../../styles/pages/product-single'
 
-  const { query: { page } } = useRouter();
+function Products({ products, numberOfProducts, page }) {
 
-  console.log(page)
+  const [nextLoading, setNextLoading] = useState(true)
+  const [previousLoading, setPreviousLoading] = useState(true)
 
-  const [products, setProducts] = useState();
-  const [search, setSearch] = useState();
+  const router = useRouter()
 
-  // const [page, setPage] = useState();
-  const [numberOfProducts, setNumberOfProducts] = useState();
+  const lastPage = Math.ceil(numberOfProducts / 3)
 
-  useEffect(() => {
-    api.get('/products', {
-      params: {
-        _start: 0,
-        _limit: 5,
-      }
-    }).then(response => setProducts(response.data));
-  }, []);
-
-  useEffect(() => {
-    api.get('/products/count').then(response => setNumberOfProducts(response.data));
-  }, []);
-
-  async function handleFilter(e) {
-    e.preventDefault();
-
-    const response = await api.get('/products', {
-      params: {
-        name_contains: search,
-      }
-    });
-
-    setProducts(response.data);
+  function ButtonLoader() {
+    return (
+      <Button disabled>
+        <div class="loader"></div>
+      </Button>
+    )
   }
+
   return (
     <Layout>
-
-      <form className="mb" onSubmit={handleFilter}>
-        <Input
-          placeholder="Buscar um produto..."
-          name="search"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </form>
       <ProductGrid>
         {products && products.map(product => (
           <div key={product.id}>
@@ -63,13 +35,61 @@ function Products() {
             />
           </div>
         ))}
-
       </ProductGrid>
-      <div className="mt mb">
-        <button onClick={() => Number(page) + 1}>Próxima página</button>
-      </div>
+
+      <Navegation>
+        {previousLoading ? (
+          <button
+            disabled={page <= 1}
+            onClick={() => {
+              setPreviousLoading(false)
+              router.push(`/produtos?page=${page - 1}`).then(res => setPreviousLoading(res))
+            }}
+          >
+            Página anterior
+          </button>
+        ) : (<ButtonLoader />)}
+
+
+        {nextLoading ? (
+          <button
+            disabled={page >= lastPage}
+            onClick={() => {
+              setNextLoading(false)
+              router.push(`/produtos?page=${page + 1}`).then(res => setNextLoading(res))
+            }}
+          >
+            Próxima página
+          </button>
+        ) : (<ButtonLoader />)}
+      </Navegation>
     </Layout>
   );
+}
+
+
+export async function getServerSideProps({ query: { page = 1 } }) {
+
+  const { NEXT_PUBLIC_API_URL } = process.env
+
+  const start = +page === 1 ? 0 : (+page - 1) * 3
+
+  const numberOfProductsResponse = await fetch(`${NEXT_PUBLIC_API_URL}/products/count`)
+
+  const numberOfProducts = await numberOfProductsResponse.json()
+
+  const productsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products?_limit=20&_start=${start}`)
+
+  const products = await productsResponse.json()
+
+
+  return {
+    props: {
+      products,
+      numberOfProducts,
+      page: +page,
+    },
+  }
 }
 
 export default Products;

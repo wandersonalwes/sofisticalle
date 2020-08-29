@@ -33,3 +33,28 @@ export const WrapperProductSingle = styled.div`
     }
   }
 `;
+
+export const Navegation = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 5rem 0;
+  padding-top: 3rem;
+  border-top: 1px solid var(--color-line-in-white);
+
+  button {
+    font-size: 1.4rem;
+    background: var(--color-primary);
+    height: 5rem;
+    padding: 0 2rem;
+    border-radius: var(--border-radius-md);
+    border: 0;
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    &:first-child {
+      margin-right: 1rem;
+    }
+  }
+`;
