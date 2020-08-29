@@ -13,7 +13,7 @@ function Products({ products, numberOfProducts, page }) {
 
   const router = useRouter()
 
-  const lastPage = Math.ceil(numberOfProducts / 3)
+  const lastPage = Math.ceil(numberOfProducts / 20)
 
   function ButtonLoader() {
     return (
@@ -78,7 +78,7 @@ export async function getServerSideProps({ query: { page = 1 } }) {
 
   const { NEXT_PUBLIC_API_URL } = process.env
 
-  const start = +page === 1 ? 0 : (+page - 1) * 3
+  const start = +page === 1 ? 0 : (+page - 1) * 20
 
   const numberOfProductsResponse = await fetch(`${NEXT_PUBLIC_API_URL}/products/count`)
 
