@@ -1,7 +1,8 @@
+import Head from 'next/head'
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 
-import { Layout, ProductGrid, ProductItem, Input, Button } from '../../components';
+import { Layout, ProductGrid, ProductItem } from '../../components';
 
 import { Navegation } from '../../styles/pages/product-single'
 
@@ -23,47 +24,52 @@ function Products({ products, numberOfProducts, page }) {
   }
 
   return (
-    <Layout>
-      <ProductGrid>
-        {products && products.map(product => (
-          <div key={product.id}>
-            <ProductItem
-              id={product.id}
-              name={product.name}
-              price={product.price}
-              photoURL={product.photos[0].url}
-            />
-          </div>
-        ))}
-      </ProductGrid>
+    <>
+      <Head>
+        <title>Sofisticalle - Produtos</title>
+      </Head>
+      <Layout>
+        <ProductGrid>
+          {products && products.map(product => (
+            <div key={product.id}>
+              <ProductItem
+                id={product.id}
+                name={product.name}
+                price={product.price}
+                photoURL={product.photos[0].url}
+              />
+            </div>
+          ))}
+        </ProductGrid>
 
-      <Navegation>
-        {previousLoading ? (
-          <button
-            disabled={page <= 1}
-            onClick={() => {
-              setPreviousLoading(false)
-              router.push(`/produtos?page=${page - 1}`).then(res => setPreviousLoading(res))
-            }}
-          >
-            Página anterior
-          </button>
-        ) : (<ButtonLoader />)}
+        <Navegation>
+          {previousLoading ? (
+            <button
+              disabled={page <= 1}
+              onClick={() => {
+                setPreviousLoading(false)
+                router.push(`/produtos?page=${page - 1}`).then(res => setPreviousLoading(res))
+              }}
+            >
+              Página anterior
+            </button>
+          ) : (<ButtonLoader />)}
 
 
-        {nextLoading ? (
-          <button
-            disabled={page >= lastPage}
-            onClick={() => {
-              setNextLoading(false)
-              router.push(`/produtos?page=${page + 1}`).then(res => setNextLoading(res))
-            }}
-          >
-            Próxima página
-          </button>
-        ) : (<ButtonLoader />)}
-      </Navegation>
-    </Layout>
+          {nextLoading ? (
+            <button
+              disabled={page >= lastPage}
+              onClick={() => {
+                setNextLoading(false)
+                router.push(`/produtos?page=${page + 1}`).then(res => setNextLoading(res))
+              }}
+            >
+              Próxima página
+            </button>
+          ) : (<ButtonLoader />)}
+        </Navegation>
+      </Layout>
+    </>
   );
 }
 
