@@ -46,7 +46,6 @@ export async function getStaticProps({ params }) {
   const { NEXT_PUBLIC_API_URL } = process.env
 
   const res = await fetch(`${NEXT_PUBLIC_API_URL}/categories/${params.id}`)
-
   const category = await res.json()
 
   return { props: { category } }

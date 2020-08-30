@@ -1,9 +1,15 @@
 import Head from 'next/head'
 import { Input, ProductItem, ProductGrid, Banner, CategoryItem, Layout } from '../components';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
 import Slider from 'react-slick';
 import Link from 'next/link';
+import { FiSearch } from 'react-icons/fi';
 
 export default function Home({ products, categories, featuredProducts }) {
+  const [searchLoading, setSearchLoading] = useState(true)
+  const [search, setSearch] = useState('')
+  const router = useRouter()
 
   const settings = {
     dots: true,
@@ -15,6 +21,14 @@ export default function Home({ products, categories, featuredProducts }) {
     speed: 1000
   };
 
+  function ButtonLoader() {
+    return (
+      <button disabled>
+        <div class="loader"></div>
+      </button>
+    )
+  }
+
   return (
     <>
       <Head>
@@ -22,9 +36,26 @@ export default function Home({ products, categories, featuredProducts }) {
       </Head>
       <Layout>
         <div className="mb">
-          <div className="mb mt">
-            <Input placeholder="Fazer uma busca" />
-          </div>
+
+          <form className="mb mt">
+            <Input
+              onChange={(e) => setSearch(e.target.value)}
+              name="search"
+              placeholder="Fazer uma busca"
+              button={
+                searchLoading ? (
+                  <button
+                    onClick={() => {
+                      setSearchLoading(false)
+                      router.push(`/produtos?search=${search}`).then(res => setSearchLoading(res))
+                    }}>
+                    <FiSearch />
+                  </button>
+                ) : <ButtonLoader />
+              }
+            />
+          </form>
+
           <div className="wrapper-list-categories mb">
             <h2 className="title mb-md">Navegue por Categorias</h2>
 
