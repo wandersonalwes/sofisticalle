@@ -73,7 +73,7 @@ function Search({ products, numberOfProducts, page }) {
               disabled={page <= 1}
               onClick={() => {
                 setPreviousLoading(false)
-                router.push(`/busca?page=${page - 1}`).then(res => setPreviousLoading(res))
+                router.push(`/produtos?page=${page - 1}`).then(res => setPreviousLoading(res))
               }}
             >
               Página anterior
@@ -86,7 +86,7 @@ function Search({ products, numberOfProducts, page }) {
               disabled={page >= lastPage}
               onClick={() => {
                 setNextLoading(false)
-                router.push(`/busca?page=${page + 1}`).then(res => setNextLoading(res))
+                router.push(`/produtos?page=${page + 1}`).then(res => setNextLoading(res))
               }}
             >
               Próxima página
