@@ -6,7 +6,7 @@ import { FiSearch } from 'react-icons/fi'
 
 import { Layout, ProductGrid, ProductItem, Input } from 'components'
 
-import { Navegation } from '@styles/pages/product-single'
+import { Navegation } from 'styles/pages/product-single'
 
 function Search({ products, numberOfProducts, page }) {
   const [nextLoading, setNextLoading] = useState(true)
