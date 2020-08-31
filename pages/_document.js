@@ -9,8 +9,7 @@ export default class MyDocument extends Document {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: (App) => (props) =>
-            sheet.collectStyles(<App {...props} />),
+          enhanceApp: App => props => sheet.collectStyles(<App {...props} />)
         })
 
       const initialProps = await Document.getInitialProps(ctx)
@@ -21,7 +20,7 @@ export default class MyDocument extends Document {
             {initialProps.styles}
             {sheet.getStyleElement()}
           </>
-        ),
+        )
       }
     } finally {
       sheet.seal()
@@ -32,7 +31,10 @@ export default class MyDocument extends Document {
     return (
       <Html lang="pt-br" style={{ fontSize: '62.5%' }}>
         <Head>
-          <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&family=Poppins:wght@400;700&display=swap"
+            rel="stylesheet"
+          />
         </Head>
         <body>
           <Main />

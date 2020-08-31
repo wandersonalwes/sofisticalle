@@ -8,7 +8,7 @@ import {
   CategoryItem,
   Layout,
   Loading
-} from 'components'
+} from '@/components/index'
 
 import { useRouter } from 'next/router'
 import Slider from 'react-slick'

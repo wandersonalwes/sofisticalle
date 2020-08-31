@@ -84,7 +84,7 @@ const Header = () => {
                   <div className="cart-item">
                     <div className="product-info">
                       <img
-                        src={`${apiConfig.baseURL}${product.photos[0].url}`}
+                        src={`${process.env.NEXT_PUBLIC_API_URL}${product.photos[0].url}`}
                         alt=""
                       />
 

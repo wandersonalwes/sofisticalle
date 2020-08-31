@@ -1,7 +1,7 @@
 import React from 'react'
 
-import GlobalStyle from '../styles/global'
-import '../styles/slick.css'
+import GlobalStyle from '@/styles/global'
+import '@/styles/slick.css'
 import CartProvider from '../contexts/CartContext'
 
 function MyApp({ Component, pageProps }) {
