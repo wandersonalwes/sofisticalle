@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Footer = styled.footer`
   padding: 2rem;
@@ -9,4 +9,4 @@ export const Footer = styled.footer`
     text-decoration: none;
     color: var(--color-title);
   }
-`;
+`

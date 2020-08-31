@@ -1,5 +1,4 @@
-import styled from 'styled-components';
-
+import styled from 'styled-components'
 
 export const Container = styled.div`
   background: white;
@@ -69,8 +68,7 @@ export const Container = styled.div`
     }
   }
 
-img {
-  max-width: 100%;
-}
-
-`;
+  img {
+    max-width: 100%;
+  }
+`

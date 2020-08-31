@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { FiGrid, FiHeart, FiShoppingBag } from 'react-icons/fi';
+import styled, { css } from 'styled-components'
+import { FiGrid, FiHeart, FiShoppingBag } from 'react-icons/fi'
 
 export const Container = styled.div`
   display: flex;
@@ -34,20 +34,26 @@ export const Container = styled.div`
       border-radius: 50%;
     }
   }
-`;
+`
 
 const iconCSS = css`
   font-size: 36px;
   color: var(--color-text-title);
 
   &:hover {
-    opacity: .8;
+    opacity: 0.8;
   }
-`;
+`
 
-export const IconMenu = styled(FiGrid)`${iconCSS}`;
-export const IconFavorites = styled(FiHeart)`${iconCSS}`;
-export const IconCart = styled(FiShoppingBag)`${iconCSS}`;
+export const IconMenu = styled(FiGrid)`
+  ${iconCSS}
+`
+export const IconFavorites = styled(FiHeart)`
+  ${iconCSS}
+`
+export const IconCart = styled(FiShoppingBag)`
+  ${iconCSS}
+`
 
 export const Cart = styled.div`
   animation-name: op;
@@ -58,7 +64,8 @@ export const Cart = styled.div`
   right: 0;
   background: white;
   z-index: 1;
-  min-width: 30rem;
+  max-width: 40rem;
+  width: 100%;
   border-left: 1px solid var(--color-line-in-white);
   overflow: auto;
 
@@ -75,7 +82,7 @@ export const Cart = styled.div`
       justify-content: center;
       align-items: center;
 
-      svg { 
+      svg {
         font-size: 2.4rem;
       }
     }
@@ -130,7 +137,7 @@ export const Cart = styled.div`
         }
         .price {
           font-size: 1.8rem;
-          font-family:'Poppins', sans-serif;
+          font-family: 'Poppins', sans-serif;
         }
       }
 
@@ -147,7 +154,7 @@ export const Cart = styled.div`
             border-radius: 50%;
           }
 
-          span { 
+          span {
             margin: 0 1rem;
             font-size: 1.4rem;
             font-family: 'Poppins', sans-serif;
@@ -163,7 +170,6 @@ export const Cart = styled.div`
       }
     }
     .box {
-      
       border-radius: var(--border-radius-md);
       padding: 2rem;
 
@@ -182,4 +188,4 @@ export const Cart = styled.div`
       }
     }
   }
-`;
+`

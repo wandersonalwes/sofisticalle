@@ -1,15 +1,13 @@
-import React, { ButtonHTMLAttributes } from 'react';
+import React from 'react'
 
-import { Container } from './styles';
+import { Container } from './styles'
 
 const Button = ({ children, ...rest }) => {
   return (
     <Container>
-      <button {...rest}>
-        {children}
-      </button>
+      <button {...rest}>{children}</button>
     </Container>
-  );
+  )
 }
 
-export default Button;
+export default Button

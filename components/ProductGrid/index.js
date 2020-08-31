@@ -1,13 +1,9 @@
-import React from 'react';
+import React from 'react'
 
-import { Container } from './styles';
+import { Container } from './styles'
 
 const ProductGrid = ({ children }) => {
-  return (
-    <Container>
-      {children}
-    </Container>
-  );
+  return <Container>{children}</Container>
 }
 
-export default ProductGrid;
+export default ProductGrid

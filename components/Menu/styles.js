@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
   position: fixed;
@@ -43,8 +43,7 @@ export const Container = styled.div`
       align-items: center;
       margin-bottom: 1.4rem;
       border-bottom: 1px solid var(--color-line-in-white);
-        .close{
-
+      .close {
         svg {
           font-size: 2.4rem;
           color: var(--color-primary);
@@ -96,7 +95,6 @@ export const Container = styled.div`
         align-items: center;
 
         li {
-
           a {
             color: var(--color-title);
 
@@ -108,10 +106,10 @@ export const Container = styled.div`
             }
           }
           & + li {
-          margin-left: 1rem;
-        }
+            margin-left: 1rem;
+          }
         }
       }
     }
   }
-`;
+`

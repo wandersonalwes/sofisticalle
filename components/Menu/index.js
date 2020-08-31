@@ -1,9 +1,9 @@
-import React from 'react';
-import { FiX } from 'react-icons/fi';
-import { FaFacebook, FaInstagram } from 'react-icons/fa';
-import Link from 'next/link';
+import React from 'react'
+import { FiX } from 'react-icons/fi'
+import { FaFacebook, FaInstagram } from 'react-icons/fa'
+import Link from 'next/link'
 
-import { Container } from './styles';
+import { Container } from './styles'
 
 function Menu({ menuIsOpen, handleClose, children }) {
   return (
@@ -13,7 +13,6 @@ function Menu({ menuIsOpen, handleClose, children }) {
           <div onClick={handleClose} className="overlay"></div>
           <div className="wrapper">
             <header className="header">
-
               <img src="/logo.svg" alt="" />
               <button className="close" onClick={handleClose}>
                 <FiX />
@@ -30,9 +29,7 @@ function Menu({ menuIsOpen, handleClose, children }) {
                   </li>
                   <li>
                     <Link href="./produtos">
-                      <a onClick={handleClose}>
-                        Todos os produtos
-                      </a>
+                      <a onClick={handleClose}>Todos os produtos</a>
                     </Link>
                   </li>
                 </ul>
@@ -41,12 +38,22 @@ function Menu({ menuIsOpen, handleClose, children }) {
               <nav className="social-links">
                 <ul>
                   <li>
-                    <a onClick={handleClose} target="_blank" href="https://www.facebook.com/sofisticalle">
+                    <a
+                      onClick={handleClose}
+                      target="_blank"
+                      rel="noreferrer"
+                      href="https://www.facebook.com/sofisticalle"
+                    >
                       <FaFacebook />
                     </a>
                   </li>
                   <li>
-                    <a onClick={handleClose} target="_blank" href="https://www.facebook.com/sofisticalle">
+                    <a
+                      onClick={handleClose}
+                      target="_blank"
+                      rel="noreferrer"
+                      href="https://www.facebook.com/sofisticalle"
+                    >
                       <FaInstagram />
                     </a>
                   </li>
@@ -57,7 +64,7 @@ function Menu({ menuIsOpen, handleClose, children }) {
         </Container>
       )}
     </>
-  );
+  )
 }
 
-export default Menu;
+export default Menu

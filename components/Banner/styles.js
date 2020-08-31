@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.article`
   padding: 5rem;
@@ -7,7 +7,6 @@ export const Container = styled.article`
   margin: 0 auto;
   height: 25rem;
   width: 100%;
-  /* max-width: 500px; */
 
   .wrapper-heading {
     display: flex;
@@ -21,8 +20,8 @@ export const Container = styled.article`
       margin-bottom: 2rem;
     }
   }
-  .caption{
+  .caption {
     color: var(--color-text-in-primary);
     font-size: 1.4rem;
   }
-`;
+`

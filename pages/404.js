@@ -1,5 +1,5 @@
-import React from 'react';
-import Link from 'next/link';
+import React from 'react'
+import Link from 'next/link'
 
 const Error = () => {
   return (
@@ -10,7 +10,7 @@ const Error = () => {
         <a>Voltar para a home</a>
       </Link>
     </div>
-  );
+  )
 }
 
-export default Error;
+export default Error

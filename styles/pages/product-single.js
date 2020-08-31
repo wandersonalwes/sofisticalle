@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const WrapperProductSingle = styled.div`
   margin: 0 auto;
@@ -32,7 +32,7 @@ export const WrapperProductSingle = styled.div`
       margin-left: 1.4rem;
     }
   }
-`;
+`
 
 export const Navegation = styled.div`
   display: flex;
@@ -57,4 +57,4 @@ export const Navegation = styled.div`
       margin-right: 1rem;
     }
   }
-`;
+`

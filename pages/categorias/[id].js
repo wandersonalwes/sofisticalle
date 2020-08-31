@@ -1,8 +1,7 @@
-import React from 'react';
-import { Layout, ProductGrid, ProductItem } from '../../components';
+import React from 'react'
+import { Layout, ProductGrid, ProductItem } from 'components'
 
 const Category = ({ category }) => {
-
   return (
     <Layout>
       <div className="mb">
@@ -27,16 +26,15 @@ const Category = ({ category }) => {
           )}
       </div>
     </Layout>
-  );
+  )
 }
 
 export async function getStaticPaths() {
-
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`)
   const categories = await res.json()
 
-  const paths = categories.map((product) => ({
-    params: { id: product.id.toString() },
+  const paths = categories.map(product => ({
+    params: { id: product.id.toString() }
   }))
 
   return { paths, fallback: false }
@@ -51,4 +49,4 @@ export async function getStaticProps({ params }) {
   return { props: { category } }
 }
 
-export default Category;
+export default Category

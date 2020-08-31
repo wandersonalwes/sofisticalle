@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components'
 
 export default createGlobalStyle`
   * {
@@ -170,4 +170,4 @@ border-radius: 10px;
     transform: rotate(360deg);
   }
 }
-`;
+`

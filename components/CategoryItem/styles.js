@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
-display: inline-block;
-margin-right: 1rem;
+  display: inline-block;
+  margin-right: 1rem;
   a {
     display: flex;
     justify-content: center;
@@ -13,7 +13,6 @@ margin-right: 1rem;
     &:hover > .wrapper-thumbnail {
       background: #f5f5f5;
     }
-
 
     img {
       width: 7rem;
@@ -33,7 +32,7 @@ margin-right: 1rem;
       align-items: center;
       text-align: center;
       text-transform: lowercase;
-      color: #240F00;
+      color: #240f00;
     }
   }
-`;
+`

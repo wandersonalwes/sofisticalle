@@ -1,11 +1,8 @@
-import React from 'react';
-import { FiHeart } from 'react-icons/fi';
-import Link from 'next/link';
-import { formatMoney } from '../../utils';
+import React from 'react'
+import Link from 'next/link'
+import { formatMoney } from '../../utils'
 
-import apiConfig from '../../config/api';
-
-import { Container } from './styles';
+import { Container } from './styles'
 
 const ProductItem = ({ id, photoURL, name, price }) => {
   return (
@@ -13,7 +10,10 @@ const ProductItem = ({ id, photoURL, name, price }) => {
       <Link href="/produtos/[id]" as={`/produtos/${id}`}>
         <a>
           <div className="wrapper-thumbnail">
-            <img src={`${apiConfig.baseURL}${photoURL}`} alt={name} />
+            <img
+              src={`${process.env.NEXT_PUBLIC_API_URL}${photoURL}`}
+              alt={name}
+            />
 
             {/* <button className="favorite">
               <FiHeart />
@@ -26,7 +26,8 @@ const ProductItem = ({ id, photoURL, name, price }) => {
           </div>
         </a>
       </Link>
-    </Container>);
+    </Container>
+  )
 }
 
-export default ProductItem;
+export default ProductItem

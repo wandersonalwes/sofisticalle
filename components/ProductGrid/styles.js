@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
   display: grid;
@@ -8,4 +8,4 @@ export const Container = styled.div`
   @media (min-width: 900px) {
     grid-template-columns: repeat(3, 1fr);
   }
-`;
+`
