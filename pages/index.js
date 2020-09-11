@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Head from 'next/head'
 import {
   Input,
   ProductItem,
@@ -7,7 +6,8 @@ import {
   Banner,
   CategoryItem,
   Layout,
-  Loading
+  Loading,
+  Head
 } from '@/components/index'
 
 import { useRouter } from 'next/router'
@@ -32,9 +32,12 @@ export default function Home({ products, categories, featuredProducts }) {
 
   return (
     <>
-      <Head>
-        <title>Sofisticalle</title>
-      </Head>
+      <Head
+        title="Sofisticalle - Móveis e eletrodomésticos"
+        description="Sofisticalle - Loja de Móveis e eletrodomésticos em Goiânia-GO"
+        keywords="moveis, goiânia, entrega grátis, montagem grátis"
+        image="/thumbnail.png"
+      />
       <Layout>
         <div className="mb">
           <form className="mb mt">
@@ -48,7 +51,7 @@ export default function Home({ products, categories, featuredProducts }) {
                     onClick={() => {
                       setSearchLoading(false)
                       router
-                        .push(`/produtos?search=${search}`)
+                        .push(`/moveis?search=${search}`)
                         .then(res => setSearchLoading(res))
                     }}
                   >
@@ -68,9 +71,9 @@ export default function Home({ products, categories, featuredProducts }) {
 
             <div className="list-categories">
               {categories.map(category => (
-                <div key={category.id}>
+                <div key={category.slug}>
                   <CategoryItem
-                    href={`/categorias/${category.id}`}
+                    href={`/moveis/${category.slug}`}
                     thumbnail={category.thumbnail.url}
                     name={category.name}
                   />
@@ -85,7 +88,7 @@ export default function Home({ products, categories, featuredProducts }) {
                 featuredProducts.map(featuredItem => (
                   <div key={featuredItem.id}>
                     <ProductItem
-                      id={featuredItem.id}
+                      slug={featuredItem.slug}
                       name={featuredItem.name}
                       price={featuredItem.price}
                       photoURL={featuredItem.photos[0].url}
@@ -104,7 +107,7 @@ export default function Home({ products, categories, featuredProducts }) {
             {products.map(product => (
               <div key={product.id}>
                 <ProductItem
-                  id={product.id}
+                  slug={product.slug}
                   name={product.name}
                   price={product.price}
                   photoURL={product.photos[0].url}
@@ -112,7 +115,7 @@ export default function Home({ products, categories, featuredProducts }) {
               </div>
             ))}
           </ProductGrid>
-          <Link href="/produtos">
+          <Link href="/moveis">
             <a className="mt btn-link">Ver todos os produtos</a>
           </Link>
         </div>

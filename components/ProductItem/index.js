@@ -4,10 +4,10 @@ import { formatMoney } from '../../utils'
 
 import { Container } from './styles'
 
-const ProductItem = ({ id, photoURL, name, price }) => {
+const ProductItem = ({ id, photoURL, name, price, slug }) => {
   return (
     <Container className="product-item">
-      <Link href="/produtos/[id]" as={`/produtos/${id}`}>
+      <Link href="/[slug]" as={`/${slug}`}>
         <a>
           <div className="wrapper-thumbnail">
             <img

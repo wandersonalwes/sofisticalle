@@ -1,0 +1,6 @@
+Sitemap: https://sofisticalle.com/sitemap.xml
+
+User-agent: *
+Allow: /*
+
+Disallow: /api/*

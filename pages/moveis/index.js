@@ -1,10 +1,9 @@
 import { useState } from 'react'
-import Head from 'next/head'
 
 import { useRouter } from 'next/router'
 import { FiSearch } from 'react-icons/fi'
 
-import { Layout, ProductGrid, ProductItem, Input } from 'components'
+import { Layout, ProductGrid, ProductItem, Input, Head } from 'components'
 
 import { Navegation } from '@/styles/pages/product-single'
 
@@ -28,9 +27,12 @@ function Search({ products, numberOfProducts, page }) {
 
   return (
     <>
-      <Head>
-        <title>Sofisticalle - Produtos</title>
-      </Head>
+      <Head
+        title="Sofisticalle - Móveis e eletrodomésticos"
+        description="Sofisticalle - Loja de Móveis e eletrodomésticos em Goiânia-GO"
+        keywords="moveis, goiânia, entrega grátis, montagem grátis"
+        image="/thumbnail.png"
+      />
       <Layout>
         <form className="mb">
           <Input
@@ -43,7 +45,7 @@ function Search({ products, numberOfProducts, page }) {
                   onClick={() => {
                     setSearchLoading(false)
                     router
-                      .push(`/produtos?search=${search}`)
+                      .push(`/moveis?search=${search}`)
                       .then(res => setSearchLoading(res))
                   }}
                 >
@@ -62,6 +64,7 @@ function Search({ products, numberOfProducts, page }) {
               <div key={product.id}>
                 <ProductItem
                   id={product.id}
+                  slug={product.slug}
                   name={product.name}
                   price={product.price}
                   photoURL={product.photos[0].url}
@@ -80,7 +83,7 @@ function Search({ products, numberOfProducts, page }) {
               onClick={() => {
                 setPreviousLoading(false)
                 router
-                  .push(`/produtos?page=${page - 1}`)
+                  .push(`/moveis?page=${page - 1}`)
                   .then(res => setPreviousLoading(res))
               }}
             >
@@ -95,7 +98,7 @@ function Search({ products, numberOfProducts, page }) {
               onClick={() => {
                 setNextLoading(false)
                 router
-                  .push(`/produtos?page=${page + 1}`)
+                  .push(`/moveis?page=${page + 1}`)
                   .then(res => setNextLoading(res))
               }}
             >
