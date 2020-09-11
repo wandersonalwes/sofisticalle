@@ -6,8 +6,7 @@ const sitemapXml = data => {
   let projectsXML = ''
 
   data.map(post => {
-    console.log(post)
-    const postDate = Date.parse(post.updated_at)
+    const postDate = post.updated_at
     if (!latestPost || postDate > latestPost) {
       latestPost = postDate
     }
@@ -17,7 +16,7 @@ const sitemapXml = data => {
       <url>
         <loc>${projectURL}</loc>
         <lastmod>${postDate}</lastmod>
-        <priority>0.50</priority>
+        <priority>0.80</priority>
       </url>`
   })
 
@@ -30,7 +29,7 @@ const sitemapXml = data => {
       </url>
       <url>
         <loc>https://sofisticalle.com/moveis/</loc>
-        <priority>0.80</priority>
+        <priority>0.50</priority>
       </url>
       ${projectsXML}
     </urlset>`
