@@ -13,7 +13,7 @@ function Menu({ menuIsOpen, handleClose, children }) {
           <div onClick={handleClose} className="overlay"></div>
           <div className="wrapper">
             <header className="header">
-              <img src="/logo.svg" alt="" />
+              <img height="40" src="/logo.svg" alt="" />
               <button className="close" onClick={handleClose}>
                 <FiX />
               </button>

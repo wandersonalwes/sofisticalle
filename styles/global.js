@@ -10,7 +10,7 @@ export default createGlobalStyle`
   :root {
     --color-line-in-white: #F2F2F2;
     --color-text-title: #000000;
-    --color-primary: #FFA700;
+    --color-primary: #FD4E09;
     --color-text-input-placeholder: #C4C4C4;
     --color-text-input: #4F4F4F;
     --shadow: 0px 4px 20px rgba(209, 195, 195, 0.25);
@@ -24,6 +24,11 @@ border-radius: 10px;
     --color-gradient-primary: linear-gradient(89.79deg, #EE0979 0.15%, #FF6A00 99.79%);
     --color-text-base: #505050;
 
+  }
+
+  button {
+    border: 0;
+    background: transparent;
   }
 
   p {

@@ -1,41 +1,48 @@
-import React, { createContext, useContext, useReducer, useState, useEffect } from 'react';
-import { CartReducer, sumItems } from './CartReducer';
-import Cookies from 'js-cookie';
+import React, {
+  createContext,
+  useContext,
+  useReducer,
+  useState,
+  useEffect
+} from 'react'
+import { CartReducer, sumItems } from './CartReducer'
+import Cookies from 'js-cookie'
 
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/router'
 
-export const CartContext = createContext({});
+export const CartContext = createContext({})
 
-var storage = [];
+var storage = []
 
 if (process.browser) {
-  var storage = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
+  var storage = localStorage.getItem('cart')
+    ? JSON.parse(localStorage.getItem('cart'))
+    : []
 }
 const initialState = { cartItems: storage, ...sumItems(storage) }
-
-
 export default function CartProvider({ children }) {
-  const [whatsapp, setWhatsapp] = useState('');
+  const [whatsapp, setWhatsapp] = useState('')
+  const [isOpen, setIsOpen] = useState(false)
 
-  const { query } = useRouter();
+  const { query } = useRouter()
 
   useEffect(() => {
     if (query.whatsapp !== undefined) {
-      Cookies.set('whatsapp', `${query.whatsapp}`);
+      Cookies.set('whatsapp', `${query.whatsapp}`)
     }
-    setWhatsapp(Cookies.get('whatsapp') ? Cookies.get('whatsapp') : '');
-  }, [query.whatsapp]);
+    setWhatsapp(Cookies.get('whatsapp') ? Cookies.get('whatsapp') : '')
+  }, [query.whatsapp])
 
-  const [state, dispatch] = useReducer(CartReducer, initialState);
+  const [state, dispatch] = useReducer(CartReducer, initialState)
 
   const addProduct = payload => {
-    return dispatch({ type: 'ADD_ITEM', payload });
+    return dispatch({ type: 'ADD_ITEM', payload })
   }
   const increase = payload => {
-    dispatch({ type: 'INCREASE', payload });
+    dispatch({ type: 'INCREASE', payload })
   }
   const decrease = payload => {
-    dispatch({ type: 'DECREASE', payload });
+    dispatch({ type: 'DECREASE', payload })
   }
 
   const removeProduct = payload => {
@@ -43,7 +50,7 @@ export default function CartProvider({ children }) {
   }
 
   const checkout = payload => {
-    console.log('CHECKOUT', state);
+    console.log('CHECKOUT', state)
     dispatch({ type: 'CHECKOUT' })
   }
 
@@ -54,6 +61,8 @@ export default function CartProvider({ children }) {
     removeProduct,
     checkout,
     whatsapp,
+    isOpen,
+    setIsOpen,
     ...state
   }
 
@@ -62,9 +71,9 @@ export default function CartProvider({ children }) {
       {children}
     </CartContext.Provider>
   )
-};
+}
 
 export function useCart() {
-  const context = useContext(CartContext);
-  return context;
+  const context = useContext(CartContext)
+  return context
 }

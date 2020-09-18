@@ -9,10 +9,14 @@ export const Container = styled.div`
   border-bottom: 1px solid var(--color-line-in-white);
   height: 7rem;
 
-  button {
+  .logo {
+    height: 4rem;
+  }
+
+  /* > button {
     border: 0;
     background: transparent;
-  }
+  } */
 
   .total-products-in-cart-wrapper {
     margin-left: 15px;
@@ -24,7 +28,7 @@ export const Container = styled.div`
       top: -0.5rem;
       right: -0.5rem;
       background: var(--color-primary);
-      color: var(--color-text-title);
+      color: var(--color-text-in-primary);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -63,7 +67,7 @@ export const Cart = styled.div`
   bottom: 0;
   right: 0;
   background: white;
-  z-index: 1;
+  z-index: 999;
   max-width: 40rem;
   width: 100%;
   border-left: 1px solid var(--color-line-in-white);
@@ -101,6 +105,10 @@ export const Cart = styled.div`
       flex-direction: column;
       justify-content: center;
       align-items: center;
+
+      h2 {
+        margin-bottom: 2rem;
+      }
 
       img {
         margin-bottom: 2rem;
@@ -148,6 +156,7 @@ export const Cart = styled.div`
         align-items: center;
         .controls {
           button {
+            background: transparent;
             width: 2.4rem;
             height: 2.4rem;
             border: 1px solid var(--color-line-in-white);
@@ -172,6 +181,10 @@ export const Cart = styled.div`
     .box {
       border-radius: var(--border-radius-md);
       padding: 2rem;
+
+      button {
+        margin-top: 2rem;
+      }
 
       .item {
         font-size: 1.4rem;

@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
       <div className="container mt">{children}</div>
 
       <Footer>
-        <p>
+        {/* <p>
           Desenvolvimento:
           <strong>
             <a
@@ -22,9 +22,9 @@ const Layout = ({ children }) => {
               Wanderson Alwes
             </a>
           </strong>
-        </p>
+        </p> */}
 
-        <p>
+        {/* <p>
           UX/UI:{' '}
           <strong>
             <a
@@ -45,7 +45,7 @@ const Layout = ({ children }) => {
               Lucas Lopes
             </a>
           </strong>
-        </p>
+        </p> */}
       </Footer>
     </>
   )

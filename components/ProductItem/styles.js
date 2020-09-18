@@ -64,7 +64,7 @@ export const Container = styled.div`
     }
     .price {
       font-size: 1.8rem;
-      color: var(--color-primary);
+      color: var(--color-text-title);
     }
   }
 

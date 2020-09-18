@@ -5,10 +5,11 @@ import { FiX } from 'react-icons/fi'
 import { formatMoney } from '../../utils'
 import { Menu } from '../index'
 
+import { Button } from '../Button'
+
 import { Container, IconMenu, IconCart, Cart } from './styles'
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false)
   const [menuIsOpen, setMenuIsOpen] = useState(false)
   const {
     itemCount,
@@ -18,7 +19,9 @@ const Header = () => {
     removeProduct,
     total,
     checkout,
-    whatsapp
+    whatsapp,
+    isOpen,
+    setIsOpen
   } = useCart()
 
   function handleClose() {
@@ -47,7 +50,7 @@ const Header = () => {
 
       <Link href="/">
         <a>
-          <img src="/logo.svg" alt="Sofisticalle" />
+          <img className="logo" src="/logo.svg" alt="Sofisticalle" />
         </a>
       </Link>
 
@@ -77,11 +80,11 @@ const Header = () => {
             <div></div>
           </header>
 
-          {cartItems.length > 0 ? (
+          {cartItems.length > 0 && (
             <div className="cart-list-wrapper">
               <div className="cart-items">
                 {cartItems.map(product => (
-                  <div className="cart-item">
+                  <div key={product.id} className="cart-item">
                     <div className="product-info">
                       <img
                         src={`${process.env.NEXT_PUBLIC_API_URL}${product.photos[0].url}`}
@@ -129,43 +132,36 @@ const Header = () => {
                   <strong>{formatMoney(total)}</strong>
                 </div>
 
-                {whatsapp !== '' && (
-                  <a
-                    onClick={checkout}
-                    className="mt btn-link"
-                    target="_blank"
-                    href={`https://api.whatsapp.com/send?phone=${whatsapp}&text=${checkoutMessage()}`}
-                  >
-                    Finalizar compra pelo Whatsapp
-                  </a>
-                )}
+                <Button
+                  variant="primary"
+                  onClick={() => {
+                    checkout()
 
-                {whatsapp === '' && (
-                  <a
-                    onClick={checkout}
-                    className="mt btn-link"
-                    target="_blank"
-                    href={`https://api.whatsapp.com/send?phone=5562993395065&text=${checkoutMessage()}`}
-                  >
-                    Finalizar compra pelo Whatsapp
-                  </a>
-                )}
+                    window.location.href = `https://api.whatsapp.com/send?phone=${
+                      whatsapp !== '' ? whatsapp : '5562993395065'
+                      }&text=${checkoutMessage()}`
+                  }}
+                >
+                  Finalizar compra pelo Whatsapp
+                </Button>
               </div>
             </div>
-          ) : (
-              <div className="cart-list-wrapper">
-                <div className="empty-cart">
-                  <img src="/icons/empty-cart.svg" alt="" />
-                  <h2>Seu carrinho está vazio :(</h2>
+          )}
 
-                  <Link href="/">
-                    <a onClick={() => setIsOpen(false)} className="mt btn-link">
-                      Comece a comprar
-                  </a>
-                  </Link>
-                </div>
+          {cartItems.length <= 0 && (
+            <div className="cart-list-wrapper">
+              <div className="empty-cart">
+                <img src="/icons/empty-cart.svg" alt="" />
+                <h2>Seu carrinho está vazio :(</h2>
+                <Button
+                  onClick={() => (window.location.href = '/')}
+                  variant="primary"
+                >
+                  Comece a comprar
+                </Button>
               </div>
-            )}
+            </div>
+          )}
         </Cart>
       )}
     </Container>

@@ -2,11 +2,11 @@ import styled from 'styled-components'
 
 export const Footer = styled.footer`
   padding: 2rem;
-  background: var(--color-line-in-white);
+  border-top: 1px solid var(--color-line-in-white);
   text-align: center;
 
-  a {
-    text-decoration: none;
-    color: var(--color-title);
+  &:after {
+    content: 'Feito com ❤ em Goiânia';
+    font-size: 1.4rem;
   }
 `

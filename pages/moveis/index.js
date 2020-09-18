@@ -7,6 +7,8 @@ import { Layout, ProductGrid, ProductItem, Input, Head } from 'components'
 
 import { Navegation } from '@/styles/pages/product-single'
 
+import { getAllPostsWithSlug } from '@/lib/api'
+
 function Search({ products, numberOfProducts, page }) {
   const [nextLoading, setNextLoading] = useState(true)
   const [previousLoading, setPreviousLoading] = useState(true)
