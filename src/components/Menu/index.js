@@ -28,7 +28,7 @@ function Menu({ menuIsOpen, handleClose, children }) {
                     </Link>
                   </li>
                   <li>
-                    <Link href="./produtos">
+                    <Link href="/moveis">
                       <a onClick={handleClose}>Todos os produtos</a>
                     </Link>
                   </li>

@@ -30,7 +30,9 @@ export default function CartProvider({ children }) {
     if (query.whatsapp !== undefined) {
       Cookies.set('whatsapp', `${query.whatsapp}`)
     }
-    setWhatsapp(Cookies.get('whatsapp') ? Cookies.get('whatsapp') : '')
+    setWhatsapp(
+      Cookies.get('whatsapp') ? Cookies.get('whatsapp') : '5562993395065'
+    )
   }, [query.whatsapp])
 
   const [state, dispatch] = useReducer(CartReducer, initialState)

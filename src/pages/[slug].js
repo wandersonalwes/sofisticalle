@@ -1,11 +1,12 @@
 import React from 'react'
-import { Layout, Button, Head } from 'components'
+import { Layout, Button, Head } from 'src/components'
 import { useRouter } from 'next/router'
 import ReactMarkdown from 'react-markdown'
 import { useCart } from '../contexts/CartContext'
 import { formatMoney } from '../utils'
 import { FiCheckCircle } from 'react-icons/fi'
 import { FaWhatsapp, FaFacebook, FaTwitter } from 'react-icons/fa'
+import api from '../services/api'
 
 import { Carousel } from 'react-responsive-carousel'
 
@@ -25,9 +26,10 @@ import {
 import Link from 'next/link'
 
 const ProductSingle = ({ product }) => {
+  console.log(product)
   const router = useRouter()
 
-  const { addProduct, cartItems, setIsOpen } = useCart()
+  const { addProduct, cartItems, setIsOpen, whatsapp } = useCart()
 
   const isInCart = product => {
     return !!cartItems.find(item => item.id === product.id)
@@ -97,9 +99,8 @@ const ProductSingle = ({ product }) => {
                 </Warning>
                 <Button
                   onClick={() =>
-                    (window.location.href = 'https://wa.me/5562993395065')
+                    (window.location.href = `https://api.whatsapp.com/send?phone=${whatsapp}&text=Olá,%20%20Tenho%20interesse%20neste%20item:%20https://sofisticalle.com/${product.slug}`)
                   }
-                  className=""
                   variant="success"
                 >
                   Comprar Agora
@@ -155,8 +156,7 @@ const ProductSingle = ({ product }) => {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`)
-  const products = await res.json()
+  const { data: products } = await api.get('/products')
 
   const paths = products.map(product => ({
     params: { slug: product.slug }
@@ -166,12 +166,10 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const { NEXT_PUBLIC_API_URL } = process.env
-
-  const res = await fetch(`${NEXT_PUBLIC_API_URL}/products?slug=${params.slug}`)
-  const product = await res.json()
-
-  return { props: { product: product[0] } }
+  const {
+    data: [product]
+  } = await api.get(`/products?slug=${params.slug}`)
+  return { props: { product } }
 }
 
 export default ProductSingle

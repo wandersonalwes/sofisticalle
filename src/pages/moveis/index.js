@@ -3,9 +3,9 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { FiSearch } from 'react-icons/fi'
 
-import { Layout, ProductGrid, ProductItem, Input, Head } from 'components'
+import { Layout, ProductGrid, ProductItem, Input, Head } from 'src/components'
 
-import { Navegation } from '@/styles/pages/product-single'
+import { Navegation } from 'src/styles/pages/product-single'
 
 function Search({ products, numberOfProducts, page }) {
   const [nextLoading, setNextLoading] = useState(true)

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import {
   Input,
   ProductItem,
@@ -14,6 +14,7 @@ import { useRouter } from 'next/router'
 import Slider from 'react-slick'
 import Link from 'next/link'
 import { FiSearch } from 'react-icons/fi'
+import api from '../services/api'
 
 export default function Home({ products, categories, featuredProducts }) {
   const [searchLoading, setSearchLoading] = useState(true)
@@ -124,24 +125,11 @@ export default function Home({ products, categories, featuredProducts }) {
   )
 }
 export async function getStaticProps() {
-  const { NEXT_PUBLIC_API_URL } = process.env
-
-  const featuredProductsResponse = await fetch(
-    `${NEXT_PUBLIC_API_URL}/products?is_featured=true`
+  const { data: featuredProducts } = await api.get('/products?is_featured=true')
+  const { data: products } = await api.get(
+    '/products?_limit=10&_sort=created_at:DESC'
   )
-
-  const featuredProducts = await featuredProductsResponse.json()
-
-  const productsResponse = await fetch(
-    `${NEXT_PUBLIC_API_URL}/products?_limit=10&_sort=created_at:DESC`
-  )
-
-  const products = await productsResponse.json()
-
-  const categoriesResponse = await fetch(`${NEXT_PUBLIC_API_URL}/categories`)
-
-  const categories = await categoriesResponse.json()
-
+  const { data: categories } = await api.get('/categories')
   return {
     props: {
       products,

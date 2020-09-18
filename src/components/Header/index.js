@@ -136,10 +136,7 @@ const Header = () => {
                   variant="primary"
                   onClick={() => {
                     checkout()
-
-                    window.location.href = `https://api.whatsapp.com/send?phone=${
-                      whatsapp !== '' ? whatsapp : '5562993395065'
-                      }&text=${checkoutMessage()}`
+                    window.location.href = `https://api.whatsapp.com/send?phone=${whatsapp}&text=${checkoutMessage()}`
                   }}
                 >
                   Finalizar compra pelo Whatsapp
