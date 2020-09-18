@@ -2,7 +2,6 @@ import React from 'react'
 import { Layout, ProductGrid, ProductItem } from 'components'
 
 const Category = ({ category }) => {
-  console.log(category)
   return (
     <Layout>
       <div className="mb">
