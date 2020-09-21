@@ -183,6 +183,7 @@ export const Navegation = styled.div`
 `
 
 export const RelatedProduct = styled.div`
+  margin-top: 4rem;
   h2 {
     font-size: 2.4rem;
     margin: 2rem 0;
