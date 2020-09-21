@@ -204,7 +204,7 @@ const ProductSingle = ({ product, relatedProducts }) => {
             <h2>Comentários</h2>
             <div
               className="fb-comments"
-              data-href="https://sofisticalle.com/"
+              data-href={`https://sofisticalle.com/${product.slug}`}
               data-numposts="5"
               data-width="100%"
             ></div>
