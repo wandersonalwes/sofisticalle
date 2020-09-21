@@ -189,7 +189,3 @@ export const Navegation = styled.div`
 export const RelatedProduct = styled.div`
   ${cardStyle}
 `
-
-export const Comments = styled.div`
-  ${cardStyle}
-`

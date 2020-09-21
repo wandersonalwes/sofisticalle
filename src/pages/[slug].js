@@ -1,4 +1,3 @@
-import React from 'react'
 import { Layout, Button, Head, ProductItem } from '@/components/index'
 import Slider from 'react-slick'
 import { useRouter } from 'next/router'
@@ -23,20 +22,18 @@ import {
   Warning,
   Share,
   ProductInformation,
-  RelatedProduct,
-  Comments
+  RelatedProduct
 } from '../styles/pages/product-single'
 import Link from 'next/link'
 
 const ProductSingle = ({ product, relatedProducts }) => {
-  console.log(relatedProducts)
   const settings = {
     dots: false,
     centerMode: true,
     infinite: true,
     slidesToShow: 3,
-    slidesToScroll: 1,
-    speed: 1000,
+    slidesToScroll: 3,
+    speed: 200,
     responsive: [
       {
         breakpoint: 600,
@@ -199,16 +196,6 @@ const ProductSingle = ({ product, relatedProducts }) => {
             <h2>Informações do produto</h2>
             <ReactMarkdown source={product.description} escapeHtml={false} />
           </ProductInformation>
-
-          <Comments>
-            <h2>Comentários</h2>
-            <div
-              className="fb-comments"
-              data-href={`https://sofisticalle.com/${product.slug}`}
-              data-numposts="5"
-              data-width="100%"
-            ></div>
-          </Comments>
         </Container>
       </Layout>
     </>
