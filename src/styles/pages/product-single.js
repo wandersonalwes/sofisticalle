@@ -105,6 +105,20 @@ export const Warning = styled.div`
       margin-right: 0.5rem;
     }
   }
+
+  a {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 800;
+    text-decoration: none;
+    color: #2196f3;
+    margin-top: 1.4rem;
+    transition: 200ms;
+
+    &:hover {
+      color: #03a9f4;
+    }
+  }
 `
 
 export const Share = styled.div`
@@ -165,5 +179,12 @@ export const Navegation = styled.div`
       background: #ccc;
       color: #aaa;
     }
+  }
+`
+
+export const RelatedProduct = styled.div`
+  h2 {
+    font-size: 2.4rem;
+    margin: 2rem 0;
   }
 `

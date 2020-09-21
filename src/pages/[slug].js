@@ -1,5 +1,6 @@
 import React from 'react'
-import { Layout, Button, Head } from 'src/components'
+import { Layout, Button, Head, ProductItem } from '@/components/index'
+import Slider from 'react-slick'
 import { useRouter } from 'next/router'
 import ReactMarkdown from 'react-markdown'
 import { useCart } from '../contexts/CartContext'
@@ -21,12 +22,37 @@ import {
   ProductPrice,
   Warning,
   Share,
-  ProductInformation
+  ProductInformation,
+  RelatedProduct
 } from '../styles/pages/product-single'
 import Link from 'next/link'
 
-const ProductSingle = ({ product }) => {
-  console.log(product)
+const ProductSingle = ({ product, relatedProducts }) => {
+  console.log(relatedProducts)
+  const settings = {
+    dots: false,
+    centerMode: true,
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    speed: 1000,
+    responsive: [
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  }
   const router = useRouter()
 
   const { addProduct, cartItems, setIsOpen, whatsapp } = useCart()
@@ -53,6 +79,11 @@ const ProductSingle = ({ product }) => {
             <BreadcrumbItem>
               <Link href="./">
                 <a>Home</a>
+              </Link>
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+              <Link href={`/moveis/${product.categories[0].slug}`}>
+                <a>{product.categories[0].name}</a>
               </Link>
             </BreadcrumbItem>
             <BreadcrumbItem>{product.name}</BreadcrumbItem>
@@ -96,6 +127,9 @@ const ProductSingle = ({ product }) => {
                     <FiCheckCircle />
                     Pagamento após a montagem
                   </p>
+                  <Link href={`${product.slug}#info`}>
+                    <a>Ver informações do produto</a>
+                  </Link>
                 </Warning>
                 <Button
                   onClick={() =>
@@ -144,7 +178,22 @@ const ProductSingle = ({ product }) => {
               </Share>
             </CheckoutWrap>
           </MainWrap>
-
+          <RelatedProduct id="info">
+            <h2>Produtos relacionados</h2>
+            <Slider {...settings}>
+              {relatedProducts &&
+                relatedProducts.map(relatedProduct => (
+                  <div key={relatedProduct.id}>
+                    <ProductItem
+                      slug={relatedProduct.slug}
+                      name={relatedProduct.name}
+                      price={relatedProduct.price}
+                      photoURL={relatedProduct.photos[0].url}
+                    />
+                  </div>
+                ))}
+            </Slider>
+          </RelatedProduct>
           <ProductInformation>
             <h2>Informações do produto</h2>
             <ReactMarkdown source={product.description} escapeHtml={false} />
@@ -166,10 +215,11 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
+  const { data: relatedProducts } = await api.get('/products?_limit=15')
   const {
     data: [product]
   } = await api.get(`/products?slug=${params.slug}`)
-  return { props: { product } }
+  return { props: { product, relatedProducts } }
 }
 
 export default ProductSingle

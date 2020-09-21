@@ -12,5 +12,8 @@
         "src/styles/*"
       ]
     }
-  }
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }

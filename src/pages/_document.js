@@ -35,6 +35,22 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap"
             rel="stylesheet"
           ></link>
+
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-158764715-1"
+          />
+
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-158764715-1');
+        `
+            }}
+          />
         </Head>
         <body>
           <Main />
