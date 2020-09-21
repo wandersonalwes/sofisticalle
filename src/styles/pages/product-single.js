@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Container = styled.div`
   margin: 0 auto;
@@ -146,13 +146,17 @@ export const Share = styled.div`
   }
 `
 
-export const ProductInformation = styled.div`
+const cardStyle = css`
   margin-top: 4rem;
 
   h2 {
     font-size: 2.4rem;
     margin-bottom: 2rem;
   }
+`
+
+export const ProductInformation = styled.div`
+  ${cardStyle}
 `
 export const Navegation = styled.div`
   display: flex;
@@ -183,9 +187,9 @@ export const Navegation = styled.div`
 `
 
 export const RelatedProduct = styled.div`
-  margin-top: 4rem;
-  h2 {
-    font-size: 2.4rem;
-    margin: 2rem 0;
-  }
+  ${cardStyle}
+`
+
+export const Comments = styled.div`
+  ${cardStyle}
 `

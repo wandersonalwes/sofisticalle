@@ -23,7 +23,8 @@ import {
   Warning,
   Share,
   ProductInformation,
-  RelatedProduct
+  RelatedProduct,
+  Comments
 } from '../styles/pages/product-single'
 import Link from 'next/link'
 
@@ -198,6 +199,16 @@ const ProductSingle = ({ product, relatedProducts }) => {
             <h2>Informações do produto</h2>
             <ReactMarkdown source={product.description} escapeHtml={false} />
           </ProductInformation>
+
+          <Comments>
+            <h2>Comentários</h2>
+            <div
+              className="fb-comments"
+              data-href="https://sofisticalle.com/"
+              data-numposts="5"
+              data-width="100%"
+            ></div>
+          </Comments>
         </Container>
       </Layout>
     </>
