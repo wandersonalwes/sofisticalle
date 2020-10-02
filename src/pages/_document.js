@@ -51,6 +51,22 @@ export default class MyDocument extends Document {
         `
             }}
           />
+
+          <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+          ></script>
+
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              (adsbygoogle = window.adsbygoogle || []).push({
+                google_ad_client: "ca-pub-5702245216877025",
+                enable_page_level_ads: true
+              });
+        `
+            }}
+          />
         </Head>
         <body>
           <Main />
