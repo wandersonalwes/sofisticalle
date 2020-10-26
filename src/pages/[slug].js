@@ -202,17 +202,17 @@ const ProductSingle = ({ product, relatedProducts }) => {
   )
 }
 
-export async function getStaticPaths() {
-  const { data: products } = await api.get('/products')
+// export async function getStaticPaths() {
+//   const { data: products } = await api.get('/products')
 
-  const paths = products.map(product => ({
-    params: { slug: product.slug }
-  }))
+//   const paths = products.map(product => ({
+//     params: { slug: product.slug }
+//   }))
 
-  return { paths, fallback: true }
-}
+//   return { paths, fallback: true }
+// }
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
   const { data: relatedProducts } = await api.get('/products?_limit=15')
   const {
     data: [product]
